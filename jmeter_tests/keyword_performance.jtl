@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testResults version="1.2">
+<httpSample t="146" lt="146" ts="1403669680400" s="true" lb="HTTP Request für hallo" rc="200" rm="OK" tn="Thread Group 1-1" dt="text" by="2800"/>
+<httpSample t="96" lt="96" ts="1403669680552" s="true" lb="HTTP Request für welt" rc="200" rm="OK" tn="Thread Group 1-1" dt="text" by="5971"/>
+<httpSample t="121" lt="121" ts="1403669680654" s="true" lb="HTTP Request für baby" rc="200" rm="OK" tn="Thread Group 1-1" dt="text" by="9338"/>
+<httpSample t="107" lt="106" ts="1403669680781" s="true" lb="HTTP Request für kinder" rc="200" rm="OK" tn="Thread Group 1-1" dt="text" by="5088"/>
+<httpSample t="127" lt="124" ts="1403669680893" s="true" lb="HTTP Request für sÃ¤ugling" rc="200" rm="OK" tn="Thread Group 1-1" dt="text" by="12898"/>
+<httpSample t="116" lt="112" ts="1403669681026" s="true" lb="HTTP Request für kleinkind" rc="200" rm="OK" tn="Thread Group 1-1" dt="text" by="13971"/>
+<httpSample t="102" lt="95" ts="1403669681148" s="true" lb="HTTP Request für hund" rc="200" rm="OK" tn="Thread Group 1-1" dt="text" by="17196"/>
+<httpSample t="136" lt="95" ts="1403669681256" s="true" lb="HTTP Request für katze" rc="200" rm="OK" tn="Thread Group 1-1" dt="text" by="20593"/>
+<httpSample t="111" lt="98" ts="1403669681398" s="true" lb="HTTP Request für bauch" rc="200" rm="OK" tn="Thread Group 1-1" dt="text" by="23259"/>
+<httpSample t="107" lt="98" ts="1403669681515" s="true" lb="HTTP Request für mutter" rc="200" rm="OK" tn="Thread Group 1-1" dt="text" by="19477"/>
+<httpSample t="106" lt="106" ts="1403669681629" s="true" lb="HTTP Request für eltern" rc="200" rm="OK" tn="Thread Group 1-1" dt="text" by="3517"/>
+<httpSample t="109" lt="104" ts="1403669681742" s="true" lb="HTTP Request für sonnenblume" rc="200" rm="OK" tn="Thread Group 1-1" dt="text" by="14596"/>
+<httpSample t="163" lt="161" ts="1403669681857" s="true" lb="HTTP Request für kindergarten" rc="200" rm="OK" tn="Thread Group 1-1" dt="text" by="18719"/>
+<httpSample t="96" lt="94" ts="1403669682027" s="true" lb="HTTP Request für toilette" rc="200" rm="OK" tn="Thread Group 1-1" dt="text" by="11021"/>
+<httpSample t="121" lt="113" ts="1403669682129" s="true" lb="HTTP Request für schrebergarten" rc="200" rm="OK" tn="Thread Group 1-1" dt="text" by="17367"/>
+<httpSample t="97" lt="92" ts="1403669682256" s="true" lb="HTTP Request für hand" rc="200" rm="OK" tn="Thread Group 1-1" dt="text" by="13797"/>
+<httpSample t="99" lt="99" ts="1403669682359" s="true" lb="HTTP Request für bonprix" rc="200" rm="OK" tn="Thread Group 1-1" dt="text" by="3087"/>
+<httpSample t="970" lt="970" ts="1403669682464" s="true" lb="HTTP Request für wikipedia" rc="200" rm="OK" tn="Thread Group 1-1" dt="text" by="1806"/>
+<httpSample t="93" lt="93" ts="1403669683440" s="true" lb="HTTP Request für mohamed" rc="200" rm="OK" tn="Thread Group 1-1" dt="text" by="3834"/>
+<httpSample t="92" lt="92" ts="1403669683539" s="true" lb="HTTP Request für prophet" rc="200" rm="OK" tn="Thread Group 1-1" dt="text" by="4285"/>
+<httpSample t="90" lt="90" ts="1403669683710" s="true" lb="HTTP Request für kirche" rc="200" rm="OK" tn="Thread Group 1-1" dt="text" by="1834"/>
+<httpSample t="103" lt="98" ts="1403669683846" s="true" lb="HTTP Request für jeans" rc="200" rm="OK" tn="Thread Group 1-1" dt="text" by="13302"/>
+<httpSample t="95" lt="88" ts="1403669683992" s="true" lb="HTTP Request für hose" rc="200" rm="OK" tn="Thread Group 1-1" dt="text" by="16350"/>
+<httpSample t="93" lt="90" ts="1403669684123" s="true" lb="HTTP Request für bluse" rc="200" rm="OK" tn="Thread Group 1-1" dt="text" by="13026"/>
+<httpSample t="104" lt="100" ts="1403669684254" s="true" lb="HTTP Request für garten" rc="200" rm="OK" tn="Thread Group 1-1" dt="text" by="13883"/>
+<httpSample t="110" lt="105" ts="1403669684393" s="true" lb="HTTP Request für schaufel" rc="200" rm="OK" tn="Thread Group 1-1" dt="text" by="14961"/>
+<httpSample t="161" lt="122" ts="1403669684540" s="true" lb="HTTP Request für verrÃ¼ckt" rc="200" rm="OK" tn="Thread Group 1-1" dt="text" by="24690"/>
+<httpSample t="155" lt="150" ts="1403669684739" s="true" lb="HTTP Request für kleinigkeit" rc="200" rm="OK" tn="Thread Group 1-1" dt="text" by="14434"/>
+<httpSample t="87" lt="87" ts="1403669684934" s="true" lb="HTTP Request für mozard" rc="200" rm="OK" tn="Thread Group 1-1" dt="text" by="4240"/>
+<httpSample t="102" lt="100" ts="1403669685055" s="true" lb="HTTP Request für fussball" rc="200" rm="OK" tn="Thread Group 1-1" dt="text" by="11457"/>
+<httpSample t="106" lt="102" ts="1403669685197" s="true" lb="HTTP Request für brasilien" rc="200" rm="OK" tn="Thread Group 1-1" dt="text" by="12972"/>
+<httpSample t="144" lt="139" ts="1403669685317" s="true" lb="HTTP Request für sÃ¼dafrika" rc="200" rm="OK" tn="Thread Group 1-1" dt="text" by="14428"/>
+<httpSample t="104" lt="97" ts="1403669685501" s="true" lb="HTTP Request für schrank" rc="200" rm="OK" tn="Thread Group 1-1" dt="text" by="16792"/>
+<httpSample t="99" lt="99" ts="1403669685645" s="true" lb="HTTP Request für tisch" rc="200" rm="OK" tn="Thread Group 1-1" dt="text" by="9540"/>
+<httpSample t="163" lt="155" ts="1403669685780" s="true" lb="HTTP Request für braune couch" rc="200" rm="OK" tn="Thread Group 1-1" dt="text" by="17951"/>
+<httpSample t="319" lt="264" ts="1403669685986" s="true" lb="HTTP Request für kellerschlÃ¼ssel" rc="200" rm="OK" tn="Thread Group 1-1" dt="text" by="29406"/>
+<httpSample t="195" lt="154" ts="1403669686346" s="true" lb="HTTP Request für grÃ¼ne socken" rc="200" rm="OK" tn="Thread Group 1-1" dt="text" by="27364"/>
+<httpSample t="178" lt="165" ts="1403669686582" s="true" lb="HTTP Request für blaue tinte" rc="200" rm="OK" tn="Thread Group 1-1" dt="text" by="23197"/>
+<httpSample t="183" lt="169" ts="1403669686804" s="true" lb="HTTP Request für warmer sommer" rc="200" rm="OK" tn="Thread Group 1-1" dt="text" by="23580"/>
+<httpSample t="188" lt="176" ts="1403669687026" s="true" lb="HTTP Request für tÃ¼rkisch fÃ¼r anfÃ¤nger" rc="200" rm="OK" tn="Thread Group 1-1" dt="text" by="22378"/>
+<httpSample t="199" lt="188" ts="1403669687258" s="true" lb="HTTP Request für lebe dein leben" rc="200" rm="OK" tn="Thread Group 1-1" dt="text" by="22275"/>
+<httpSample t="268" lt="212" ts="1403669687512" s="true" lb="HTTP Request für sing meinen song" rc="200" rm="OK" tn="Thread Group 1-1" dt="text" by="35973"/>
+<httpSample t="91" lt="91" ts="1403669687802" s="true" lb="HTTP Request für musik" rc="200" rm="OK" tn="Thread Group 1-1" dt="text" by="3240"/>
+<httpSample t="494" lt="425" ts="1403669687927" s="true" lb="HTTP Request für pistole abschieÃŸen" rc="200" rm="OK" tn="Thread Group 1-1" dt="text" by="30598"/>
+<httpSample t="239" lt="172" ts="1403669688441" s="true" lb="HTTP Request für bombe bauen" rc="200" rm="OK" tn="Thread Group 1-1" dt="text" by="18184"/>
+<httpSample t="236" lt="190" ts="1403669688714" s="true" lb="HTTP Request für auto waschen" rc="200" rm="OK" tn="Thread Group 1-1" dt="text" by="20946"/>
+<httpSample t="113" lt="113" ts="1403669688986" s="true" lb="HTTP Request für bmw eins" rc="200" rm="OK" tn="Thread Group 1-1" dt="text" by="5813"/>
+<httpSample t="140" lt="140" ts="1403669689131" s="true" lb="HTTP Request für honda accord" rc="200" rm="OK" tn="Thread Group 1-1" dt="text" by="8787"/>
+<httpSample t="97" lt="97" ts="1403669689308" s="true" lb="HTTP Request für autobahn" rc="200" rm="OK" tn="Thread Group 1-1" dt="text" by="5548"/>
+<httpSample t="103" lt="103" ts="1403669689440" s="true" lb="HTTP Request für autobahnrennen" rc="200" rm="OK" tn="Thread Group 1-1" dt="text" by="5745"/>
+<httpSample t="126" lt="126" ts="1403669689577" s="true" lb="HTTP Request für rennwagen" rc="200" rm="OK" tn="Thread Group 1-1" dt="text" by="11001"/>
+<httpSample t="511" lt="460" ts="1403669689736" s="true" lb="HTTP Request für kinder erziehen" rc="200" rm="OK" tn="Thread Group 1-1" dt="text" by="21508"/>
+<httpSample t="372" lt="318" ts="1403669690286" s="true" lb="HTTP Request für schnell fahren" rc="200" rm="OK" tn="Thread Group 1-1" dt="text" by="30934"/>
+<httpSample t="178" lt="137" ts="1403669690693" s="true" lb="HTTP Request für liebe leute" rc="200" rm="OK" tn="Thread Group 1-1" dt="text" by="22889"/>
+<httpSample t="108" lt="108" ts="1403669690914" s="true" lb="HTTP Request für tendenziell" rc="200" rm="OK" tn="Thread Group 1-1" dt="text" by="7088"/>
+<httpSample t="363" lt="362" ts="1403669691061" s="true" lb="HTTP Request für richtig abstillen" rc="200" rm="OK" tn="Thread Group 1-1" dt="text" by="16100"/>
+<httpSample t="176" lt="173" ts="1403669691454" s="true" lb="HTTP Request für baby durchfall" rc="200" rm="OK" tn="Thread Group 1-1" dt="text" by="22857"/>
+<httpSample t="100" lt="100" ts="1403669691642" s="true" lb="HTTP Request für hinterhof" rc="200" rm="OK" tn="Thread Group 1-1" dt="text" by="5086"/>
+<httpSample t="483" lt="483" ts="1403669691771" s="true" lb="HTTP Request für geburtstermin errechnen" rc="200" rm="OK" tn="Thread Group 1-1" dt="text" by="11000"/>
+<httpSample t="369" lt="368" ts="1403669692284" s="true" lb="HTTP Request für schwanger sein" rc="200" rm="OK" tn="Thread Group 1-1" dt="text" by="15725"/>
+
+</testResults>

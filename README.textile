@@ -1,0 +1,79 @@
+h1. Solidsearch 
+
+h2. A full scalable web search engine combining the power of PostgreSQL, Elasticsearch and Vaadin
+
+h3. "http://www.solidsearch.org":http://www.solidsearch.org
+
+Solidsearch is a scalable web search engine. See features here:
+
+http://www.solidsearch.org/features/
+
+h2. Getting Started
+
+Installation time depends on size of distributed environment. 
+
+First time you will need at least one hour for installation all components on one machine.
+
+Take care and read our installation instructions: http://www.solidsearch.org/installation/
+
+h3. Hardware requirements
+
+Solidsearch is very efficient in dealing with hardware resources.
+
+You need minimum 3 CPU cores, 6 GB RAM and 200 GB HD.
+
+SSDs shows better search performance (just if you are RAM limited) but ordinary HD will also do a good job.
+
+h3. Start crawling / indexing
+
+Login to http://localhost:8080/manager
+
+Go to "Domains" panel and add the domain you would like to analyze. 
+
+Set "Enable indexing" > Crawling will start immediately.
+
+You can see the status of crawling-job on the "Dashboard" panel.
+
+Solidsearch bot uses very safety crawling speed which does not bring any server in trouble. 
+
+It  also decreases crawling speed automatically if site is getting slower.
+
+Due to the safety crawling speed you will need to wait some time until crawling is finished.
+
+Bot needs to complete a whole crawling, before documents are available by searchhead.
+
+Bot take care about robots.txt instructions for GoogleBot.
+
+If you want to stop SolidsearchBot from crawling your site, please enter this to your robots.txt
+
+User-agent: solidsearchbot
+
+Disallow: /
+
+h3. Searching
+
+Only go to http://localhost:8080/searchhead and type in your query.
+
+h1. Initial Author
+
+Steffen Otto
+
+h1. License
+
+<pre>
+This software is licensed under the Apache License, version 2.
+
+Copyright 2009-2015 Solidsearch <http://www.solidsearch.org>
+
+Licensed under the Apache License, Version 2.0 (the "License"); you may not
+use this file except in compliance with the License. You may obtain a copy of
+the License at
+
+    http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS, WITHOUT
+WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the
+License for the specific language governing permissions and limitations under
+the License.
+</pre>
