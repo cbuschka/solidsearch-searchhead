@@ -8,7 +8,7 @@ Solidsearch is a scalable web search engine. See features here:
 
 http://www.solidsearch.org/features/
 
-h2. Getting Started
+h3. Installation
 
 Installation time depends on size of distributed environment. 
 
@@ -26,35 +26,15 @@ SSDs shows better search performance (just if you are RAM limited) but ordinary 
 
 h3. Start crawling / indexing
 
-Login to http://localhost:8080/manager
+Please take a look to "Getting started":
 
-Go to "Domains" panel and add the domain you would like to analyze. 
-
-Set "Enable indexing" > Crawling will start immediately.
-
-You can see the status of crawling-job on the "Dashboard" panel.
-
-Solidsearch bot uses very safety crawling speed which does not bring any server in trouble. 
-
-It  also decreases crawling speed automatically if site is getting slower.
-
-Due to the safety crawling speed you will need to wait some time until crawling is finished.
-
-Bot needs to complete a whole crawling, before documents are available by searchhead.
-
-Bot take care about robots.txt instructions for GoogleBot.
-
-If you want to stop SolidsearchBot from crawling your site, please enter this to your robots.txt
-
-User-agent: solidsearchbot
-
-Disallow: /
+http://www.solidsearch.org/getting-started/
 
 h3. Searching
 
 Only go to http://localhost:8080/searchhead and type in your query.
 
-h1. Initial Author
+h1. Author
 
 Steffen Otto
 
