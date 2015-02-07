@@ -117,7 +117,7 @@ a
 </head>
 <body OnLoad="document.form1.search.focus();">
 	<div class="topbox">
-	<div class="logo_center" id="solidsearchlogo" ><img style="max-width:100%; max-height:100%;" src="solidsearch.png"></div>
+	<div class="logo_center" id="solidsearchlogo" ><a href="http://www.solidsearch.org"><img style="max-width:100%; max-height:100%;" src="solidsearch.png"></a></div>
 	<div class="searchbox_center" id="searchbox">
 	<form name="form1">
 		<table>
