@@ -27,6 +27,7 @@ import org.springframework.stereotype.Component;
 
 import de.solidsearch.searchhead.utils.EsClientManager;
 import de.solidsearch.shared.data.KeywordStem;
+import de.solidsearch.shared.textanalysis.RoutingGenerator;
 import de.solidsearch.shared.textanalysis.TextNormalizer;
 import de.solidsearch.shared.utils.QWLocale;
 
@@ -50,6 +51,8 @@ public class SearchQueryManager
 	public final String BRANDINDEXALIASNAME = "solidsearch_brands_alias";
 
 	public final static String SEARCHINDEXALIASNAME = "solidsearch_search_alias";
+	
+	public RoutingGenerator rg = new RoutingGenerator();
 
 	public String getSearchResult(String query, int page, int debugmode, HttpServletRequest request)
 	{
@@ -67,9 +70,12 @@ public class SearchQueryManager
 		// preparations
 		short qwLocale = detectLanguage(query);
 
-		ArrayList<KeywordStem> keywords = getKeywords(query, qwLocale);
+		String[] keywords = query.split("\\s|-");
 		
-		String mainKeyword = keywords.get(0).getShortestTerm();
+		if (keywords.length == 0)
+			return "";
+		
+		String mainKeyword = keywords[0];
 
 		ArrayList<String> routings = getSearchIndexRoutings(keywords);
 
@@ -386,20 +392,13 @@ public class SearchQueryManager
 		return QWLocale.GERMAN;
 	}
 
-	private ArrayList<KeywordStem> getKeywords(String query, short qwLocale)
-	{
-		TextNormalizer tn = new TextNormalizer();
-
-		return tn.normalize(query, qwLocale, (short) 0);
-	}
-
-	private ArrayList<String> getSearchIndexRoutings(ArrayList<KeywordStem> keywords)
+	private ArrayList<String> getSearchIndexRoutings(String[] keywords)
 	{
 		ArrayList<String> routings = new ArrayList<String>();
 
-		for (int i = 0; i < keywords.size(); i++)
+		for (int i = 0; i < keywords.length; i++)
 		{
-			routings.add(getSearchIndexRouting((keywords.get(i))));
+			routings.add(rg.getSearchIndexRouting((keywords[i])));
 			// ask max 3 indicies
 			if (i >= 3)
 				break;
@@ -446,26 +445,6 @@ public class SearchQueryManager
 			searchScript = "_score + doc['searchscore'].value";
 			break;
 		}
-	}
-
-	// refactoring necessary....
-	// put this to shared project
-
-	private DoubleMetaphone metaphone = new DoubleMetaphone();
-
-	public String getSearchIndexRouting(KeywordStem keyword)
-	{
-		String routingKey = metaphone.encode(keyword.getKeywordStem());
-		if (routingKey != null)
-		{
-			if (routingKey.length() > 29)
-			{
-				return routingKey.substring(0, 29);
-			}
-		}
-		else
-			return "default";
-		return routingKey;
 	}
 
 	// refactoring necessary....
