@@ -92,11 +92,11 @@ public class SearchQueryManager
 
 		setUpDebugModeIfNecessary(query);
 
-		MultiMatchQueryBuilder b = QueryBuilders.multiMatchQuery(cleanupAndRewriteSearchQuery(query), "domainname^4", "brandname^5", "title^3", "onpagetext_stemed^2", "onpagetext_ngram^2").minimumShouldMatch(minShouldMatch);
+		MultiMatchQueryBuilder b = QueryBuilders.multiMatchQuery(cleanupAndRewriteSearchQuery(query), "domainname^4", "brandname^5", "title_stemmed^3", "title_ngram^2", "onpagetext_stemed^2", "onpagetext_ngram").minimumShouldMatch(minShouldMatch);
 		
 		srb.setQuery(b);
 		// avoid less relevant hits
-		srb.setMinScore(0.8f);
+		srb.setMinScore(0.6f);
 		
 		if (debugmode >= 0)
 			System.out.println(srb.toString());
