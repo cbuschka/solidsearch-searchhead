@@ -44,9 +44,7 @@ public class SearchQueryManager
 
 	private String debugOutPut = "";
 
-	private String minShouldMatch = "85%";
-
-	private String searchScript = null;
+	private String minShouldMatch = "90%";
 
 	public final String BRANDINDEXALIASNAME = "solidsearch_brands_alias";
 
@@ -62,8 +60,6 @@ public class SearchQueryManager
 		StringBuffer resultHTML = new StringBuffer();
 
 		this.debugmode = debugmode;
-
-		searchScript = null;
 
 		TransportClient client = esc.getTransportClient();
 
@@ -84,7 +80,9 @@ public class SearchQueryManager
 		// DFS QUERY THEN FETCH: TFxIDF over all shards
 		// later (with more data per index) we can disable this...
 		srb.setSearchType(SearchType.DFS_QUERY_THEN_FETCH);
-		srb.setRouting(routings.toArray(new String[routings.size()]));
+		
+		if (debugmode == 1)
+			srb.setRouting(routings.toArray(new String[routings.size()]));
 		
 		// currently only static paging
 		srb.setFrom(0);
@@ -92,14 +90,14 @@ public class SearchQueryManager
 
 		setUpDebugModeIfNecessary(query);
 
-		MultiMatchQueryBuilder b = QueryBuilders.multiMatchQuery(cleanupAndRewriteSearchQuery(query), "domainname^4", "brandname^5", "title_stemmed^3", "title_ngram^2", "onpagetext_stemed^2", "onpagetext_ngram").minimumShouldMatch(minShouldMatch);
+		MultiMatchQueryBuilder b = QueryBuilders.multiMatchQuery(cleanupAndRewriteSearchQuery(query), "domainname^5", "brandname^8", "title^4", "onpagetext_stemed^3", "onpagetext_ngram").minimumShouldMatch(minShouldMatch);
 		
 		srb.setQuery(b);
 		// avoid less relevant hits
-		srb.setMinScore(0.6f);
+		srb.setMinScore(0.5f);
 		
 		if (debugmode >= 0)
-			System.out.println(srb.toString());
+			logger.info(srb.toString());
 
 		SearchResponse response = srb.execute().actionGet();
 		long timeAfter = System.currentTimeMillis() - timebefore;
@@ -283,15 +281,18 @@ public class SearchQueryManager
 				normalizedESScoreToOne = normalizedESScoreToOne * 0.8f;
 			}
 
-			tmpHits.put(hit, normalizedESScoreToOne + normalzedSearchScoreToOne);
+			if (debugmode >= 2)
+				tmpHits.put(hit, hit.score());
+			else
+				tmpHits.put(hit, normalizedESScoreToOne + normalzedSearchScoreToOne);
 		}
 
 		Map<SearchHit, Float> sortedHits = sortByComparator(tmpHits);
 
 		if (debugmode != 6)
 		{
-			// show 3 results of the same domain
-			for (int z = 0; z < 3; z++)
+			// show 6 results of the same domain
+			for (int z = 0; z < 6; z++)
 			{
 				// remove entries from the same domain...
 				for (Iterator<SearchHit> iterator = sortedHits.keySet().iterator(); iterator.hasNext();)
@@ -411,38 +412,31 @@ public class SearchQueryManager
 		switch (debugmode)
 		{
 		case 0:
-			debugOutPut = ", DebugMode 0: Default search. MSM: 85%. Search: " + query;
-			searchScript = "_score + doc['searchscore'].value";
+			debugOutPut = ", DebugMode 0: Default search. MSM: 90%. Search: " + query;
 			break;
 		case 1:
 			minShouldMatch = "90%";
-			debugOutPut = ", DebugMode 1: Default search + MSM. MSM: 90%. Search: " + query;
-			searchScript = "_score + doc['searchscore'].value";
+			debugOutPut = ", DebugMode 1: Default search. MSM: 90%. ROUTING enabled. Search: " + query;
 			break;
 		case 2:
-			minShouldMatch = "85%";
-			debugOutPut = ", DebugMode 2: Text only search. MSM: 85%. Search: " + query;
-			searchScript = null;
+			minShouldMatch = "90%";
+			debugOutPut = ", DebugMode 2: Text only search. MSM: 90%. Search: " + query;
 			break;
 		case 3:
-			minShouldMatch = "90%";
-			debugOutPut = ", DebugMode 3: Text only search. MSM: 90%. Search: " + query;
-			searchScript = null;
+			minShouldMatch = "95%";
+			debugOutPut = ", DebugMode 3: Text only search. MSM: 95%. Search: " + query;
 			break;
 		case 4:
-			minShouldMatch = "85%";
-			debugOutPut = ", DebugMode 4: QualityScore*3,Varietytopicscore*1. MSM: 85%. Search: " + query;
-			searchScript = "_score +(doc['qualityscore'].value * 3) * doc['varietytopicscore'].value";
+			minShouldMatch = "100%";
+			debugOutPut = ", DebugMode 4: Text only search. MSM: 100%. Search: " + query;
 			break;
 		case 5:
 			minShouldMatch = "90%";
-			debugOutPut = ", DebugMode 4: QualityScore*3,Varietytopicscore*1. MSM: 90%. Search: " + query;
-			searchScript = "_score +(doc['qualityscore'].value * 3) * doc['varietytopicscore'].value";
+			debugOutPut = ", DebugMode 5: Text only search. MSM: 90%. Search: " + query;
 			break;
 		default:
-			minShouldMatch = "85%";
+			minShouldMatch = "90%";
 			debugOutPut = "";
-			searchScript = "_score + doc['searchscore'].value";
 			break;
 		}
 	}
