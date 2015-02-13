@@ -26,6 +26,7 @@ import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 
 import de.solidsearch.searchhead.utils.EsClientManager;
+import de.solidsearch.searchhead.utils.HeadConfig;
 import de.solidsearch.shared.data.KeywordStem;
 import de.solidsearch.shared.textanalysis.RoutingGenerator;
 import de.solidsearch.shared.textanalysis.TextNormalizer;
@@ -38,6 +39,9 @@ public class SearchQueryManager
 	@Autowired
 	EsClientManager esc;
 
+	@Autowired
+	HeadConfig config;
+	
 	private static final Logger logger = Logger.getLogger(SearchQueryManager.class.getName());
 
 	private int debugmode = -1;
@@ -77,20 +81,22 @@ public class SearchQueryManager
 
 		SearchRequestBuilder srb = client.prepareSearch(SEARCHINDEXALIASNAME,BRANDINDEXALIASNAME);
 
-		// DFS QUERY THEN FETCH: TFxIDF over all shards
-		// later (with more data per index) we can disable this...
-		srb.setSearchType(SearchType.DFS_QUERY_THEN_FETCH);
+		// routing means also less quality, more performance
+		if (!config.ESROUTING_ENABLED)
+			srb.setSearchType(SearchType.DFS_QUERY_THEN_FETCH);
 		
-		if (debugmode == 1)
+		if (debugmode == 1 || config.ESROUTING_ENABLED)
 			srb.setRouting(routings.toArray(new String[routings.size()]));
 		
 		// currently only static paging
 		srb.setFrom(0);
 		srb.setSize(100);
 
+		srb.addIndexBoost(BRANDINDEXALIASNAME, 2.0f);
+		
 		setUpDebugModeIfNecessary(query);
 
-		MultiMatchQueryBuilder b = QueryBuilders.multiMatchQuery(cleanupAndRewriteSearchQuery(query), "domainname^5", "brandname^8", "title^4", "onpagetext_stemed^3", "onpagetext_ngram").minimumShouldMatch(minShouldMatch);
+		MultiMatchQueryBuilder b = QueryBuilders.multiMatchQuery(cleanupAndRewriteSearchQuery(query), "domainname^8", "brandname^8", "title^4", "onpagetext_stemed^3", "onpagetext_ngram").minimumShouldMatch(minShouldMatch);
 		
 		srb.setQuery(b);
 		// avoid less relevant hits
@@ -412,27 +418,27 @@ public class SearchQueryManager
 		switch (debugmode)
 		{
 		case 0:
-			debugOutPut = ", DebugMode 0: Default search. MSM: 90%. Search: " + query;
+			debugOutPut = ", DebugMode 0: Default search. MSM: 90%. Routing: " + config.ESROUTING_ENABLED + ", Search: " + query;
 			break;
 		case 1:
 			minShouldMatch = "90%";
-			debugOutPut = ", DebugMode 1: Default search. MSM: 90%. ROUTING enabled. Search: " + query;
+			debugOutPut = ", DebugMode 1: Default search. MSM: 90%. Routing: " + (config.ESROUTING_ENABLED || debugmode == 1) + ", Search: " + query;
 			break;
 		case 2:
 			minShouldMatch = "90%";
-			debugOutPut = ", DebugMode 2: Text only search. MSM: 90%. Search: " + query;
+			debugOutPut = ", DebugMode 2: Text only search. MSM: 90%.Routing: " + config.ESROUTING_ENABLED + ", Search: " + query;
 			break;
 		case 3:
 			minShouldMatch = "95%";
-			debugOutPut = ", DebugMode 3: Text only search. MSM: 95%. Search: " + query;
+			debugOutPut = ", DebugMode 3: Text only search. MSM: 95%. Routing: " + config.ESROUTING_ENABLED + ", Search: " + query;
 			break;
 		case 4:
 			minShouldMatch = "100%";
-			debugOutPut = ", DebugMode 4: Text only search. MSM: 100%. Search: " + query;
+			debugOutPut = ", DebugMode 4: Text only search. MSM: 100%. Routing: " + config.ESROUTING_ENABLED + ", Search: " + query;
 			break;
 		case 5:
 			minShouldMatch = "90%";
-			debugOutPut = ", DebugMode 5: Text only search. MSM: 90%. Search: " + query;
+			debugOutPut = ", DebugMode 5: Text only search. MSM: 90%. Routing: " + config.ESROUTING_ENABLED + ", Search: " + query;
 			break;
 		default:
 			minShouldMatch = "90%";

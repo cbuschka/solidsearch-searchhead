@@ -17,6 +17,8 @@ public class HeadConfig implements Serializable
 	public String ESCLUSTERNAME;
 	@Value("${es.host1}")
 	public String ESHOST1;
+	@Value("${es.routing}")
+	public boolean ESROUTING_ENABLED;
 	@Value("${manager.url1")
 	public String MANAGERURL1;
 	@Value("${manager.remoteKey}")
