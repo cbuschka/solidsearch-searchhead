@@ -51,8 +51,12 @@ public class SearchQueryManager
 	private String minShouldMatch = "90%";
 
 	public final String BRANDINDEXALIASNAME = "solidsearch_brands_alias";
+	
+	public final String BRANDINDEXNAME = "solidsearch_brands";
 
 	public final static String SEARCHINDEXALIASNAME = "solidsearch_search_alias";
+	
+	public final static String SEARCHINDEXNAME = "solidsearch_search";
 	
 	public RoutingGenerator rg = new RoutingGenerator();
 
@@ -79,7 +83,7 @@ public class SearchQueryManager
 
 		ArrayList<String> routings = getSearchIndexRoutings(keywords);
 
-		SearchRequestBuilder srb = client.prepareSearch(SEARCHINDEXALIASNAME,BRANDINDEXALIASNAME);
+		SearchRequestBuilder srb = client.prepareSearch(SEARCHINDEXNAME,BRANDINDEXNAME);
 
 		// routing means also less quality, more performance
 		if (!config.ESROUTING_ENABLED)
@@ -92,7 +96,7 @@ public class SearchQueryManager
 		srb.setFrom(0);
 		srb.setSize(100);
 
-		srb.addIndexBoost(BRANDINDEXALIASNAME, 2.0f);
+		srb.addIndexBoost(BRANDINDEXNAME, 2.0f);
 		
 		setUpDebugModeIfNecessary(query);
 
